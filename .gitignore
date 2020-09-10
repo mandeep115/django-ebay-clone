@@ -1,2 +1,5 @@
 auctions/__pycache__
 commerce/__pycache__
+*/*/__pycache__
+*/__pycache__
+__pycache__

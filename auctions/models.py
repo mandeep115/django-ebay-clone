@@ -22,9 +22,9 @@ class Listing(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category, blank=True)
     title = models.CharField(max_length=90)
-    details = models.CharField(max_length=1000)
+    details = models.TextField(max_length=1000)
     image_url = models.CharField(max_length=500)
-    bid = models.IntegerField(blank=True)
+    bid = models.DecimalField(max_digits=19, decimal_places=2, blank=True)
     # comments = models.ManyToManyField(Comment)
     timestamp = models.DateTimeField(auto_now_add=True)
 

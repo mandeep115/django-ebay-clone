@@ -14,12 +14,21 @@ class CreateListing(forms.ModelForm):
         fields = ['user', 'title', 'categories', 'details', 'image_url', 'bid']
         widgets = {
             'categories': forms.CheckboxSelectMultiple(),
-            'user': forms.HiddenInput(), 
+            'user': forms.HiddenInput(),
         }
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+    listings = Listing.objects.all()
+    return render(request, "auctions/index.html", {
+        "listings": listings
+    })
+
+def listing(request, id):
+    listing = Listing.objects.get(id=id)
+    return render(request, "auctions/listing.html", {
+        "listing": listing,
+    })
 
 
 def login_view(request):
