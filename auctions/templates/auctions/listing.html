@@ -1,14 +1,23 @@
-{% extends "auctions/layout.html" %}
-
+{% extends "auctions/layout.html" %} 
 {% block body %}
-       <h1>{{listing.title}}</h1>
-       <p>By <span>{{listing.user}}</span></p>
-       <img src="{{listing.image_url}}" alt="">
-       <p>
-           <strong>${{listing.bid}}</strong>
-       </p>
-       <p>
-           {{listing.details}}
-       </p>
+  <div class="container">
+    <div class="listing">
+      <h1>{{listing.title}}</h1>
+      {% if listing in watchlist %}
+        <a href="{% url 'toggle' listing.id %}" class="btn btn-secondary">Remove from watchlist</a>
+      {% else %}  
+        <a href="{% url 'toggle' listing.id %}" class="btn btn-secondary">Add to watchlist</a>
+      {% endif %}
+      <p>By <span>{{listing.user}}</span></p>
+      <img src="{{listing.image_url}}" alt="" />
+      <p>
+        <strong>${{listing.bid}}</strong>
+      </p>
+      <p>{{listing.details}}</p>
 
+      {% if listing.user == request.user %}
+      <a href="{% url 'update' listing.id %}" class="btn btn-outline-primary">Edit</a>
+      {% endif %} 
+    </div>
+  </div>
 {% endblock %}

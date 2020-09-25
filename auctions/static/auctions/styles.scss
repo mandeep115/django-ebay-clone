@@ -1,0 +1,51 @@
+.my__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+body {
+  padding: 10px;
+}
+
+.card > img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+
+.listingForm {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+/* Listing page */
+
+.listing {
+  img {
+    object-fit: contain;
+    width: 60%;
+  }
+}
+
+// Form page
+#id_categories {
+  height: 100px;
+  width: 300px;
+  overflow-y: scroll;
+
+  li {
+    list-style: none;
+  }
+}
+
+
+
+// item-list-view
+.heading {
+  margin-right: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #d3d3d3;
+}

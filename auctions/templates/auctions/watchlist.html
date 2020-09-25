@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+
+    <div>
+        <h1 class="heading">
+            Watchlist
+        </h1>
+    {% if listings %}
+        {% for listing in listings %}
+            <div class="row">
+                <img src="{{listing.image_url}}" alt="">
+                <div>
+                    <h4>{{listing.title}}</h4>
+                    <p>{{listing.details}}</p>
+                    <a href="{% url 'toggle' listing.id %}" class="btn btn-primary">Remove</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+            <p>No listing in Watchlist</p>
+    {% endif %}
+    </div>
+
+{% endblock %}

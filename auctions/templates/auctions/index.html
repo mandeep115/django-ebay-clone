@@ -1,18 +1,27 @@
-{% extends "auctions/layout.html" %} {% block body %}
-<h2>Active Listings</h2>
+{% extends "auctions/layout.html" %} 
 
-<div class="my__row">
+{% block body %}
+  <h2>Active Listings</h2>
+
+  <div class="my__row">
     {% for listing in listings %}
-        <div class="card" style="width: 20rem">
-            <img class="card-img-top" src="{{listing.image_url}}" alt="Card image cap" />
-            <div class="card-body">
-                <h5 class="card-title">{{listing.title}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">
-                    Current Bid ${{ listing.bid }}
-                </h6>
-                <p class="card-text">{{listing.details}}</p>
-                <a href="{% url 'listing' listing.id %}" class="btn btn-primary">Go To Listing</a>
-            </div>
-        </div>
-    {% endfor %} {% endblock %}
-</div>  
+    <div class="card" style="width: 20rem; min-height: 25rem; margin: 15px;">
+      <img
+        class="card-img-top"
+        src="{{listing.image_url}}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{listing.title}}</h5>
+        <h6 class="card-subtitle mb-2">
+          <strong>Current Bid ${{ listing.bid }}</strong>
+        </h6>
+        <p class="card-text">{{listing.details}}</p>
+        <a style="position: absolute; bottom: 10px;" href="{% url 'listing' listing.id %}" class="btn btn-primary"
+          >Go To Listing</a
+        >
+      </div>
+    </div>
+    {% endfor %} 
+  </div>
+{% endblock %}

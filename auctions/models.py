@@ -29,7 +29,7 @@ class Listing(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.title} create at {self.timestamp}"
+        return f"{self.title}"
 
 
 class Comment(models.Model):
@@ -45,7 +45,7 @@ class Comment(models.Model):
 class Watchlist(models.Model):
     # id, user_id, list_id
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    listings = models.ManyToManyField(Listing)
+    listings = models.ManyToManyField(Listing, blank=True)
 
     def __str__(self):
-        return f"{self.user}: {self.listings}"
+        return f"{self.user}: {list(listing for listing in self.listings.all())}"
